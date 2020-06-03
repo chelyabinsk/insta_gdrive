@@ -95,7 +95,7 @@ if(r.status_code == 200):
 
 
     # Update task
-    r = s.post("https://www.pythonanywhere.com/user/{}/schedule/task/90982/extend".format(os.environ['PA_ACC']),headers=headers,cookies=s.cookies)
+    r = s.post("https://www.pythonanywhere.com/user/{}/schedule/task/{}/extend".format(os.environ['PA_ACC'],os.environ['PA_TASKNUM']),headers=headers,cookies=s.cookies)
 
     if(r.status_code == 200):
         print("Renewed task!")
