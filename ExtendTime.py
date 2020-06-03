@@ -57,7 +57,7 @@ if(r.status_code == 200):
 
     headers = {
         "Host": "www.pythonanywhere.com",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0",
+        "User-Agent": os.environ['USR_AGENT'],
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
         "Accept-Language": "en-GB,en;q=0.5",
         "Accept-Encoding": "gzip, deflate, br",
