@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 Created on Mon Jun  3 20:23:45 2019
+
 @author: me
 """
 
@@ -10,7 +11,7 @@ import os
 s = requests.Session()
 headers = {
         "Host": "www.pythonanywhere.com",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0",
+        "User-Agent": os.environ['USR_AGENT'],
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
         "Accept-Language": "en-GB,en;q=0.5",
         "Accept-Encoding": "gzip, deflate, br",
@@ -39,7 +40,7 @@ data = {
         }
 headers = {
         "Host": "www.pythonanywhere.com",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0",
+        "User-Agent": os.environ['USR_AGENT'],
         "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
         "Accept-Language": "en-GB,en;q=0.5",
         "Accept-Encoding": "gzip, deflate, br",
@@ -65,7 +66,7 @@ if(r.status_code == 200):
         "Upgrade-Insecure-Requests": "1",
         "Cache-Control": "max-age=0"
         }
-    r = s.get("https://www.pythonanywhere.com/user/seva/tasks_tab/",headers=headers)
+    r = s.get("https://www.pythonanywhere.com/user/{}/tasks_tab/".format(os.environ['PA_ACC']),headers=headers)
     #print(r.status_code)
 
     fulltext = r.text
@@ -80,11 +81,11 @@ if(r.status_code == 200):
 
     headers = {
         "Host": "www.pythonanywhere.com",
-        "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:67.0) Gecko/20100101 Firefox/67.0",
+        "User-Agent": os.environ['USR_AGENT'],
         "Accept": "application/json",
         "Accept-Language": "en-GB,en;q=0.5",
         "Accept-Encoding": "gzip, deflate, br",
-        "Referer": "https://www.pythonanywhere.com/user/seva/tasks_tab/",
+        "Referer": "https://www.pythonanywhere.com/user/{}/tasks_tab/".format(os.environ['PA_ACC']),
         "X-CSRFToken": csrftoken,
         "Content-Type": "application/json",
         "Origin": "https://www.pythonanywhere.com",
@@ -94,7 +95,7 @@ if(r.status_code == 200):
 
 
     # Update task
-    r = s.post("https://www.pythonanywhere.com/user/seva/schedule/task/90982/extend",headers=headers,cookies=s.cookies)
+    r = s.post("https://www.pythonanywhere.com/user/{}/schedule/task/90982/extend".format(os.environ['PA_ACC']),headers=headers,cookies=s.cookies)
 
     if(r.status_code == 200):
         print("Renewed task!")
