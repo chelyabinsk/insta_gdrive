@@ -83,15 +83,16 @@ def main():
     print('Drawing stuff')
     drawer.draw_img1(word)
     drawer.draw_img2(word)
-    
+    print('Sending messages')
     for c,recv in enumerate(recv_ids):
         if c == 0:
-            bot.api.direct_message(debug_txt,recv_ids[c]['uid'])
+            bot.api.direct_message(debug_txt,recv['uid'])
         else:
-            bot.api.direct_message(txt,recv_ids[c]['uid'])
-    
+            bot.api.direct_message(txt,recv['uid'])
+    print('Cleaning folder')
     G.clean_folder()
     print("Uploading images")
     G.upload_files(["Images/pic1.jpg","Images/pic2.jpg"])
     print("Done")
 
+main()
