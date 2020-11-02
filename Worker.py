@@ -76,19 +76,19 @@ def main():
     debug_txt = bot.write_status(word,emoji_data,status)
     
     recv_ids = eval(getenv('INSTA_IDS'))
-    
-    for c,recv in enumerate(recv_ids):
-        if c == 0:
-            bot.api.direct_message(debug_txt,recv_ids[c]['uid'])
-        else:
-            bot.api.direct_message(txt,recv_ids[c]['uid'])
-    
+        
     drawer = ImageArtist()
     print("Downloading image")
     drawer.download_image(word["word"])
     print('Drawing stuff')
     drawer.draw_img1(word)
     drawer.draw_img2(word)
+    
+    for c,recv in enumerate(recv_ids):
+        if c == 0:
+            bot.api.direct_message(debug_txt,recv_ids[c]['uid'])
+        else:
+            bot.api.direct_message(txt,recv_ids[c]['uid'])
     
     G.clean_folder()
     print("Uploading images")
