@@ -1,6 +1,6 @@
 APScheduler
-Pillow
 google
+Pillow
 google-api-core
 google-api-python-client
 google-auth
