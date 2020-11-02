@@ -77,8 +77,11 @@ def main():
     
     recv_ids = eval(getenv('INSTA_IDS'))
     
-    bot.api.direct_message(debug_txt,recv_ids[0]['uid'])
-    bot.api.direct_message(txt,recv_ids[1]['uid'])
+    for c,recv in enumerate(recv_ids):
+        if c == 0:
+            bot.api.direct_message(debug_txt,recv_ids[c]['uid'])
+        else:
+            bot.api.direct_message(txt,recv_ids[c]['uid'])
     
     drawer = ImageArtist()
     print("Downloading image")
