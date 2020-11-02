@@ -1,14 +1,14 @@
 from apscheduler.schedulers.blocking import BlockingScheduler
-import ExtendTime
+#import ExtendTime
 
 sched = BlockingScheduler()
-import insta_test
+from Worker import main
 
-insta_test.main()
+main()
 
 
 @sched.scheduled_job('cron', hour=6)
 def scheduled_job():
-    insta_test.main()
+    main()
 
 sched.start()
