@@ -61,33 +61,34 @@ status: {7}
         )
         return txt
 
-# G = GDrive()
-
-WP = Word_picker()
-WP.get_word()
-word = WP.page_data
-status = WP.status
-
-# Login into my account
-bot = insta_bot(getenv('INSTA_ACC'),getenv('INSTA_PASS'))
-emoji_data = random_emoji()
-txt = bot.write_message(word,emoji_data)
-debug_txt = bot.write_status(word,emoji_data,status)
-
-recv_ids = eval(getenv('INSTA_IDS'))
-
-bot.api.direct_message(debug_txt,recv_ids[0]['uid'])
-bot.api.direct_message(txt,recv_ids[1]['uid'])
-
-# drawer = ImageArtist()
-# print("Downloading image")
-# drawer.download_image(word["word"])
-# print('Drawing stuff')
-# drawer.draw_img1(word)
-# drawer.draw_img2(word)
-
-# G.clean_folder()
-# print("Uploading images")
-# G.upload_files(["Images/pic1.jpg","Images/pic2.jpg"])
-# print("Done")
+def main():
+    G = GDrive()
+    
+    WP = Word_picker()
+    WP.get_word()
+    word = WP.page_data
+    status = WP.status
+    
+    # Login into my account
+    bot = insta_bot(getenv('INSTA_ACC'),getenv('INSTA_PASS'))
+    emoji_data = random_emoji()
+    txt = bot.write_message(word,emoji_data)
+    debug_txt = bot.write_status(word,emoji_data,status)
+    
+    recv_ids = eval(getenv('INSTA_IDS'))
+    
+    bot.api.direct_message(debug_txt,recv_ids[0]['uid'])
+    bot.api.direct_message(txt,recv_ids[1]['uid'])
+    
+    drawer = ImageArtist()
+    print("Downloading image")
+    drawer.download_image(word["word"])
+    print('Drawing stuff')
+    drawer.draw_img1(word)
+    drawer.draw_img2(word)
+    
+    G.clean_folder()
+    print("Uploading images")
+    G.upload_files(["Images/pic1.jpg","Images/pic2.jpg"])
+    print("Done")
 
