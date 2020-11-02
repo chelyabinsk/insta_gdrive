@@ -1,9 +1,8 @@
 gh.token
 client_secrets.json
-!requirements.txt
 *.config
-*.txt
 *.png
+*.jpg
 *.html
 *.pdf
 # Byte-compiled / optimized / DLL files
