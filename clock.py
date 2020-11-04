@@ -4,7 +4,7 @@ from apscheduler.schedulers.blocking import BlockingScheduler
 sched = BlockingScheduler()
 from Worker import main
 
-main()
+#main()
 
 
 @sched.scheduled_job('cron', hour=6)
